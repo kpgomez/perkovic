@@ -15,9 +15,10 @@ class Crawler2:
 
         for link in links:
             if link not in self.visited:
-                self.crawl(link)
-            else:
-                pass
+                try:
+                    self.crawl(link)
+                except:
+                    pass
 
     def analyze(self, url: str) -> list:
         print('Visiting', url)
