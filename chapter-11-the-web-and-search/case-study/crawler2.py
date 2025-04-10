@@ -1,6 +1,7 @@
 from urllib.request import urlopen
 from collector import Collector
 
+
 # Practice Problem 11.7
 
 class Crawler2:
@@ -21,16 +22,16 @@ class Crawler2:
                     pass
 
 
-def analyze(url: str) -> list:
-    print('Visiting', url)
+    def analyze(url: str) -> list:
+        print('Visiting', url)
 
-    # obtain links in the web page
-    content = urlopen(url).read().decode()
-    collector = Collector(url)
-    collector.feed(content)
-    urls = collector.get_links()
+        # obtain links in the web page
+        content = urlopen(url).read().decode()
+        collector = Collector(url)
+        collector.feed(content)
+        urls = collector.get_links()
 
-    return urls
+        return urls
 
 
 if __name__ == '__main__':
