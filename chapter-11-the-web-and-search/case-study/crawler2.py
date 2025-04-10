@@ -11,7 +11,7 @@ class Crawler2:
 
     def crawl(self, url: str) -> None:
         self.visited.add(url)
-        links = self.analyze(url)
+        links = analyze(url)
 
         for link in links:
             if link not in self.visited:
@@ -20,16 +20,17 @@ class Crawler2:
                 except:
                     pass
 
-    def analyze(self, url: str) -> list:
-        print('Visiting', url)
 
-        # obtain links in the web page
-        content = urlopen(url).read().decode()
-        collector = Collector(url)
-        collector.feed(content)
-        urls = collector.get_links()
+def analyze(url: str) -> list:
+    print('Visiting', url)
 
-        return urls
+    # obtain links in the web page
+    content = urlopen(url).read().decode()
+    collector = Collector(url)
+    collector.feed(content)
+    urls = collector.get_links()
+
+    return urls
 
 
 if __name__ == '__main__':
